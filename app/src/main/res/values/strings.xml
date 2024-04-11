@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">KompreseObrázku</string>
+    <string-array name="compression_methods">
+        <item>Komprese změnou kvality</item>
+        <item>Komprese změnou rozlišení</item>
+        <item>Komprese algoritmem (efektivní)</item>
+    </string-array>
+</resources>

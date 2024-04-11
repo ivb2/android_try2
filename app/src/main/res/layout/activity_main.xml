@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Spinner pro výběr komprimační metody -->
+
+    <!-- SeekBar pro nastavení úrovně komprese -->
+
+    <!-- Textové pole pro zobrazení procentuální hodnoty úrovně komprese -->
+
+    <Button
+        android:id="@+id/btnChooseImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Vybrat obrázek"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <Spinner
+        android:id="@+id/spinnerCompressionMethod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnChooseImage"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnChooseImage"
+        app:layout_constraintVertical_bias="0.045" />
+
+    <SeekBar
+        android:id="@+id/seekBarCompressionLevel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinnerCompressionMethod"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:max="100"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/editTextCompressionLevel"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCompressionMethod"
+        app:layout_constraintVertical_bias="0.103" />
+
+    <EditText
+        android:id="@+id/editTextCompressionLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/seekBarCompressionLevel"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/seekBarCompressionLevel"
+        android:inputType="number"
+        android:maxLength="3"
+        android:text="0%"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/seekBarCompressionLevel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seekBarCompressionLevel"
+        app:layout_constraintVertical_bias="0.48" />
+
+    <Button
+        android:id="@+id/btnCompress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seekBarCompressionLevel"
+        android:layout_centerHorizontal="true"
+        android:text="Komprimovat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarCompressionLevel"
+        app:layout_constraintVertical_bias="0.139" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Komprimační metoda:"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerCompressionMethod"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerCompressionMethod"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nastavení poměru komprese"
+        app:layout_constraintBottom_toTopOf="@+id/seekBarCompressionLevel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
