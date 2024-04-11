@@ -28,6 +28,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import android.media.MediaScannerConnection;
 import android.net.Uri;
@@ -155,21 +157,32 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
 
-        // Získání komprimační metody
+        // Získání komprimační metody z resources
+        String[] compressionMethods = getResources().getStringArray(R.array.compression_methods);
+
+// Získání komprimační metody
         String compressionMethod = spinnerCompressionMethod.getSelectedItem().toString();
 
         // Získání úrovně komprese
         int compressionLevel = seekBarCompressionLevel.getProgress();
 
-        // Komprese obrázku podle zvolené metody a úrovně komprese
+// Kontrola výstupu z výběru metody
         Bitmap compressedBitmap = null;
-        if (compressionMethod.equals("Metoda 1")) {
+        if (compressionMethod.equals(compressionMethods[0])) {
+            // Komprese metodou 1
             compressedBitmap = compressBitmapMethod1(bitmap, compressionLevel);
-        } else if (compressionMethod.equals("Metoda 2")) {
+        } else if (compressionMethod.equals(compressionMethods[1])) {
+            // Komprese metodou 2
             compressedBitmap = compressBitmapMethod2(bitmap, compressionLevel);
-        } else if (compressionMethod.equals("Metoda 3")) {
+        } else if (compressionMethod.equals(compressionMethods[2])) {
+            // Komprese metodou 3
             compressedBitmap = compressBitmapMethod3(bitmap, compressionLevel);
+        } else {
+            // Neplatná metoda komprese
+            Toast.makeText(this, "Neplatná metoda komprese.", Toast.LENGTH_SHORT).show();
+            return;
         }
+
 
         // Uložení komprimované bitmapy do složky pictures/compressed v interním úložišti zařízení
         File picturesDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
@@ -177,7 +190,12 @@ public class MainActivity extends Activity {
         if (!compressedDir.exists()) {
             compressedDir.mkdirs(); // Vytvoření složky, pokud ještě neexistuje
         }
-        File file = new File(compressedDir, "compressed_image.jpg");
+        //File file = new File(compressedDir, "compressed_image.jpg");
+
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String fileName = "compressed_image_" + timeStamp + ".jpg";
+        File file = new File(compressedDir, fileName);
+
         try {
             FileOutputStream fos = new FileOutputStream(file);
             compressedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);

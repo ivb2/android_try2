@@ -89,9 +89,9 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:text="Komprimační metoda:"
         app:layout_constraintBottom_toTopOf="@+id/spinnerCompressionMethod"
-        app:layout_constraintEnd_toStartOf="@+id/spinnerCompressionMethod"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
